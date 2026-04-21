@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import sqlite3
 
 DATABASE = 'cars.db'
@@ -17,3 +18,24 @@ def print_all_cars():
 
 if __name__ == "__main__":
     print_all_cars()
+=======
+import sqlite3
+
+DATABASE = 'cars.db'
+
+
+def print_all_cars():
+    speed = input("What speed: ")
+    with sqlite3.connect(DATABASE) as db:
+        cursor = db.cursor()
+        sql = "SELECT car_name,top_speed FROM car WHERE top_speed > ?;"
+        cursor.execute(sql,(speed,))
+        results = cursor.fetchall()
+
+        for car in results:
+            print(f"Car: {car[0]} Top Speed: {car[1]}")
+
+
+if __name__ == "__main__":
+    print_all_cars()
+>>>>>>> fc8a112272b18c8dda11f823a166690a9d68721e
